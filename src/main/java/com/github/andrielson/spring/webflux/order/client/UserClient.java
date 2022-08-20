@@ -2,9 +2,11 @@ package com.github.andrielson.spring.webflux.order.client;
 
 import com.github.andrielson.spring.webflux.order.dto.TransactionRequestDto;
 import com.github.andrielson.spring.webflux.order.dto.TransactionResponseDto;
+import com.github.andrielson.spring.webflux.order.dto.UserDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -22,5 +24,13 @@ public class UserClient {
                 .bodyValue(requestDto)
                 .retrieve()
                 .bodyToMono(TransactionResponseDto.class);
+    }
+
+    public Flux<UserDto> getAllUsers() {
+        return this.webClient
+                .get()
+                .uri("all")
+                .retrieve()
+                .bodyToFlux(UserDto.class);
     }
 }
