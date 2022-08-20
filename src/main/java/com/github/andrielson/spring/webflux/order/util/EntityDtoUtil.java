@@ -14,7 +14,7 @@ public class EntityDtoUtil {
 
     public static PurchaseOrder getPurchaseOrder(RequestContext requestContext) {
         var purchaseOrder = new PurchaseOrder();
-        purchaseOrder.setId(requestContext.getPurchaseOrderRequestDto().getUserId());
+        purchaseOrder.setUserId(requestContext.getPurchaseOrderRequestDto().getUserId());
         purchaseOrder.setProductId(requestContext.getPurchaseOrderRequestDto().getProductId());
         purchaseOrder.setAmount(requestContext.getProductDto().getPrice());
 
